@@ -74,10 +74,28 @@ $(document).ready(function(){
             datatype:'JSON'
         }).done(function(data){
             d=$.parseJSON(data);
-            displayToDo(d['incomplete']);
-            displayComplete(d['complete']);
+            display_todo(d['incomplete']);
+            displaycomplete(d['complete']);
         })
     })
+})
+$(document).ready(function(){
+    $('#completed-tasks').on('change','#complete_check',function(){
+        $.ajax({
+           'url':'function.php',
+           'method':'POST',
+           'data':{
+               'unchecked': $(this).data('uncheckid')
+           },
+           datatype : "JSON" ,
+        }).done(function(data){
+           d=$.parseJSON(data);
+           display_todo(d['incomplete']);
+           displaycomplete(d['complete']);
+        })
+    })
+
+    
 })
 function display_todo(data){
     var temp = "";
@@ -92,8 +110,12 @@ function display_todo(data){
 
 }
 function displaycomplete(data){
-var temp = "";
-for(var i =0 ; i < data.length ; i++){
-    temp += "<li><input type = 'checkbox"
-}
-}
+    var temp = "";
+    for(var i =0 ; i < data.length ; i++){
+        temp += "<li><input type = 'checkbox' data-uncheckid = "+i+" checked name = 'check' id = 'complete_check'>\
+        <label>"+data[i]+"</label><input type='text'>\
+        </li>\
+        <input type='text' hidden name='myVal' value='"+i+"' >" 
+    }
+    $('#completed-tasks').html(temp);
+    }

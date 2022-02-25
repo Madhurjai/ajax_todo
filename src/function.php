@@ -52,4 +52,37 @@ if(isset($_POST['del_Btn'])){
         echo json_encode($_SESSION['incomplete']);
     }
 }
+
+if(isset($_POST['checked'])){
+    $_SESSION['temp'] = $_SESSION['incomplete'][$_POST['checked']] ; 
+    array_splice($_SESSION['incomplete'],$_POST['checked'],1);
+    if(isset($_SESSION['complete'])){
+    array_push($_SESSION['complete'],$_SESSION['temp']);
+    
+}
+else{
+    $_SESSION['complete'] = array($_SESSION['temp']);
+}
+$myArr=array();
+$myArr['incomplete'] = $_SESSION['incomplete'];
+$myArr['complete'] = $_SESSION['complete'];
+echo json_encode($myArr);
+
+
+}
+if(isset($_POST['unchecked'])){
+    $_SESSION['temp'] = $_SESSION['complete'][$_POST['unchecked']] ; 
+    array_splice($_SESSION['complete'],$_POST['unchecked'],1);
+    if(isset($_SESSION['incomplete'])){
+    array_push($_SESSION['incomplete'],$_SESSION['temp']);
+    
+}
+else{
+    $_SESSION['incomplete'] = array($_SESSION['temp']);
+}
+$myArr=array();
+$myArr['incomplete'] = $_SESSION['incomplete'];
+$myArr['complete'] = $_SESSION['complete'];
+echo json_encode($myArr);
+}
 ?>
