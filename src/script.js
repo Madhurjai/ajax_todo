@@ -73,6 +73,8 @@ $(document).ready(function(){
             'data':{'checked':$(this).data('checkid')},
             datatype:'JSON'
         }).done(function(data){
+            console.log(data);
+
             d=$.parseJSON(data);
             display_todo(d['incomplete']);
             displaycomplete(d['complete']);
@@ -89,6 +91,8 @@ $(document).ready(function(){
            },
            datatype : "JSON" ,
         }).done(function(data){
+            console.log(data);
+
            d=$.parseJSON(data);
            display_todo(d['incomplete']);
            displaycomplete(d['complete']);

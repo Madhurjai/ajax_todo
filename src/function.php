@@ -1,21 +1,7 @@
 <?php 
 session_start();
 
-function display_todo(){
-   if(isset($_SESSION['incomplete'])){
-       foreach($_SESSION['incomplete'] as $key => $val){
-           echo "<li><input type = 'checkbox' name = 'check'></li>
-           <label>".$val."</label>
-        <button class='' id ='edit' data-edit=".$key."  name='editBtn'>Edit</button>
-        <button class='' id='delete' data-delete=".$key."  name='detBtn'>delete</button>
-        <input type='hidden' name='todoid' value=".$key." ></li>" ;
 
-        
-       }
-   }
-else{
-    echo " " ;
-}}
 
 if(isset($_POST['input'])){
     

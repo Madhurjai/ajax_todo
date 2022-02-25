@@ -22,7 +22,6 @@ session_start();
             <ul id="incomplete-tasks">
                 <!-- <li><input type="checkbox"><label>Pay Bills</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
                 <li><input type="checkbox"><label>Go Shopping</label><input type="text" value="Go Shopping"><button class="edit">Edit</button><button class="delete">Delete</button></li> -->
-               <?php display_todo(); ?>
             </ul>
     
             <h3>Completed</h3>
